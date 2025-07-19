@@ -27,8 +27,8 @@ export default function BottomNavigation() {
               onClick={() => navigate(item.path)}
               className={`flex-1 py-3 px-2 text-center rounded-none h-auto flex flex-col items-center gap-1 ${
                 isActive 
-                  ? "text-primary bg-blue-50 dark:bg-blue-900/20" 
-                  : "text-gray-500 dark:text-gray-400 hover:text-primary"
+                  ? "text-blue-600 bg-blue-50/50 dark:bg-blue-900/10 dark:text-blue-400" 
+                  : "text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
               }`}
             >
               <Icon size={20} />

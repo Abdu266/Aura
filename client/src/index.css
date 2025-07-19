@@ -82,11 +82,46 @@
   .high-contrast {
     --background: hsl(0, 0%, 0%);
     --foreground: hsl(0, 0%, 100%);
-    --card: hsl(0, 0%, 0%);
+    --card: hsl(0, 0%, 10%);
     --card-foreground: hsl(0, 0%, 100%);
-    --border: hsl(0, 0%, 100%);
-    --primary: hsl(60, 100%, 50%);
+    --border: hsl(0, 0%, 90%);
+    --input: hsl(0, 0%, 20%);
+    --muted: hsl(0, 0%, 15%);
+    --muted-foreground: hsl(0, 0%, 85%);
+    --primary: hsl(45, 100%, 60%);
     --primary-foreground: hsl(0, 0%, 0%);
+    --secondary: hsl(0, 0%, 15%);
+    --secondary-foreground: hsl(0, 0%, 100%);
+    --accent: hsl(120, 100%, 40%);
+    --accent-foreground: hsl(0, 0%, 0%);
+    --destructive: hsl(0, 100%, 60%);
+    --destructive-foreground: hsl(0, 0%, 100%);
+  }
+
+  /* Small font size option */
+  .font-small {
+    font-size: 0.875rem;
+  }
+
+  .font-small .text-sm {
+    font-size: 0.75rem;
+  }
+
+  .font-small .text-base {
+    font-size: 0.875rem;
+  }
+
+  .font-small .text-lg {
+    font-size: 1rem;
+  }
+
+  .font-small .text-xl {
+    font-size: 1.125rem;
+  }
+
+  /* Medium font size is default */
+  .font-medium {
+    font-size: 1rem;
   }
 
   /* Large font size option */

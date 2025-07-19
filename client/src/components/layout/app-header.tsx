@@ -1,9 +1,11 @@
 import { Brain, Moon, Sun, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
+import { useLocation } from "wouter";
 
 export default function AppHeader() {
   const { theme, toggleTheme } = useTheme();
+  const [, navigate] = useLocation();
 
   return (
     <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
@@ -35,6 +37,7 @@ export default function AppHeader() {
             <Button
               variant="ghost"
               size="icon"
+              onClick={() => navigate("/more")}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
               aria-label="Open settings"
             >

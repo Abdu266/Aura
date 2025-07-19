@@ -19,7 +19,7 @@ import {
   FileText,
   HelpCircle 
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function More() {
   const { toast } = useToast();
@@ -30,13 +30,15 @@ export default function More() {
 
   const { data: preferences } = useQuery({
     queryKey: ["/api/user/preferences"],
-    onSuccess: (data) => {
-      if (data) {
-        setEmergencyContact(data.emergencyContact || "");
-        setEmergencyContactName(data.emergencyContactName || "");
-      }
-    },
   });
+
+  // Update state when preferences data changes
+  useEffect(() => {
+    if (preferences) {
+      setEmergencyContact(preferences.emergencyContact || "");
+      setEmergencyContactName(preferences.emergencyContactName || "");
+    }
+  }, [preferences]);
 
   const updatePreferencesMutation = useMutation({
     mutationFn: async (data: any) => {
