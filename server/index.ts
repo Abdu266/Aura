@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -47,13 +48,17 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
+  // For production, serve static files from dist/public
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../dist/public")));
+    
+    // Catch all handler: send back React's index.html file for SPA routing
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../dist/public/index.html"));
+    });
   } else {
-    serveStatic(app);
+    // Development setup with Vite
+    await setupVite(app, server);
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
